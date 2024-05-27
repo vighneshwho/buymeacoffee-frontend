@@ -1,0 +1,87 @@
+@import '../../App.scss';
+
+.headerParent{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+
+    padding: 0 26px;
+    height: 70px;
+
+    border: 1px #22222210 solid;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    img{
+        width: 50px;
+        margin-right: 54px;
+    }
+
+    .menu{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+    }
+
+    .menu > li{
+        cursor: pointer;
+        transition: color 0.2s ease-out;
+    }
+
+    .menu>li:hover{
+        color: $purpleHover;
+    }
+
+    .buttons{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 13px;
+        margin-left: 13px;
+    }
+}
+
+.searchBoxParent{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    height: 40px;
+    border: 1px  rgba($black, 0.10) solid;
+    border-radius: 20px;
+    gap: 0;
+
+    padding: 0 13px;
+    gap: 13px;
+
+    img{
+        width: 15px;
+        margin: 0;
+    }
+
+    input{
+        flex: 1;
+        align-self: stretch;
+        width: 200px;
+        border: none;
+        outline: none;
+        margin: none;
+    }
+    input::placeholder{
+        color: rgba($black, 0.50);
+    }
+    
+    
+
+    
+}
