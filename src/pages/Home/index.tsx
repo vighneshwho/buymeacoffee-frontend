@@ -1,10 +1,10 @@
-import Header from "../../components/Header";
+import Hero from "./components/Hero";
 // import styles from "./style.module.scss";
 
 const Home = () => {
   return (
     <>
-      <Header />
+      <Hero />
     </>
   );
 };
