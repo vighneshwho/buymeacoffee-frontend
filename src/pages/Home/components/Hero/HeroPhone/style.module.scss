@@ -16,6 +16,7 @@
     .phone{
         width: 230px;
         height: 475px;
+        opacity: 0;
 
         background-color: white;
         border-radius: 31px;
@@ -160,6 +161,7 @@
         align-items: center;
         justify-content: center;
         gap: 20px;
+        opacity: 0;
 
         z-index: 40;
 
@@ -191,6 +193,8 @@
         position: absolute;
         margin-left: -420px;
         margin-top: -220px;
+
+        transform-origin: left center;
         .bubble{
             display: flex;
             align-items: center;
@@ -209,6 +213,8 @@
         margin-top: 180px;
         flex-direction: row-reverse;
         align-items: flex-start;
+
+        transform-origin: right center;
         .dp{
             background-color: $dpBlue;
             margin-top: -8px;

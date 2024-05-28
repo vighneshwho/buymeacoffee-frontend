@@ -5,12 +5,87 @@ import audio from "../../../../../assets/audio.png";
 import bag from "../../../../../assets/bag.jpg";
 import gift from "../../../../../assets/gift.png";
 import overlayPlay from "../../../../../assets/overlayPlay.png";
-// import { useEffect, useRef } from "react";
-// import anime from "animejs";
+import { useEffect, useRef } from "react";
+import anime from "animejs";
 
 const HeroPhone = () => {
+  const heroParentRef = useRef(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (
+            entry.isIntersecting &&
+            entry.intersectionRatio >= 0.8 &&
+            !hasAnimated.current
+          ) {
+            hasAnimated.current = true;
+            const timeline = anime.timeline({
+              easing: "easeOutExpo",
+              duration: 1000,
+            });
+
+            timeline
+              .add({
+                targets: "#phone",
+                translateY: [200, 0],
+                opacity: [0, 1],
+              })
+
+              .add(
+                {
+                  targets: "#chat div",
+                  translateY: [50, 0],
+                  opacity: [0, 1],
+                  delay: anime.stagger(50),
+                },
+                "-=500"
+              )
+
+              .add(
+                {
+                  targets: "#overlayBoy",
+                  rotate: [20, 0],
+                  opacity: [0, 1],
+                  delay: anime.stagger(50),
+                  duration: 500,
+                },
+                "-=500"
+              )
+
+              .add(
+                {
+                  targets: "#overlayGirl",
+                  rotate: [-20, 0],
+                  opacity: [0, 1],
+                  delay: anime.stagger(50),
+                  duration: 500,
+                },
+                "-=300"
+              );
+          }
+        });
+      },
+      {
+        threshold: 0.8,
+      }
+    );
+
+    if (heroParentRef.current) {
+      observer.observe(heroParentRef.current);
+    }
+
+    return () => {
+      if (heroParentRef.current) {
+        observer.unobserve(heroParentRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className={style.heroPhoneParent}>
+    <div className={style.heroPhoneParent} id="#heroParent" ref={heroParentRef}>
       <div className={style.phone} id="phone">
         <div className={style.phoneHeader}>
           <div className={style.dp}>
@@ -22,7 +97,7 @@ const HeroPhone = () => {
           </div>
         </div>
 
-        <div className={style.phoneChat}>
+        <div className={style.phoneChat} id="chat">
           <div className={`${style.chat} ${style.chatLeft}`}>
             <div className={style.bubble}>Yeah sure! get him too.</div>
             <div className={style.meta}>12:00 PM</div>
@@ -48,7 +123,7 @@ const HeroPhone = () => {
         </div>
       </div>
 
-      <div className={`${style.overlayBoy} ${style.overlay}`}>
+      <div className={`${style.overlayBoy} ${style.overlay}`} id="overlayBoy">
         <div className={style.dp}>
           <img src={boy} alt="" />
         </div>
@@ -58,7 +133,7 @@ const HeroPhone = () => {
         </div>
       </div>
 
-      <div className={`${style.overlayGirl} ${style.overlay}`}>
+      <div className={`${style.overlayGirl} ${style.overlay}`} id="overlayGirl">
         <div className={style.dp}>
           <img src={girl} alt="" />
         </div>
