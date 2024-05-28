@@ -1,10 +1,11 @@
+import Details from "./components/Details";
 import Hero from "./components/Hero";
-// import styles from "./style.module.scss";
 
 const Home = () => {
   return (
     <>
       <Hero />
+      <Details />
     </>
   );
 };

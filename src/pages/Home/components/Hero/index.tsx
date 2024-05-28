@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Header from "../../../../components/Header";
 import HeroPhone from "./HeroPhone";
 import PhoneInput from "./PhoneInput";
@@ -6,7 +6,6 @@ import style from "./style.module.scss";
 import anime from "animejs";
 
 const Hero = () => {
-  const animationRef = useRef(null);
   useEffect(() => {
     const timeline = anime.timeline({
       easing: "easeOutExpo",
