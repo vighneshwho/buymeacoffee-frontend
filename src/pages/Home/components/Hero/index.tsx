@@ -1,4 +1,5 @@
 import Header from "../../../../components/Header";
+import HeroPhone from "./HeroPhone";
 import PhoneInput from "./PhoneInput";
 import style from "./style.module.scss";
 
@@ -13,6 +14,7 @@ const Hero = () => {
 
         <PhoneInput />
       </div>
+      <HeroPhone />
     </div>
   );
 };
