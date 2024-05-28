@@ -10,12 +10,13 @@ const DetailSecondary = () => {
   const hasAnimated = useRef(false);
 
   useEffect(() => {
+    const isPhone = window.matchMedia("(max-width: 768px)").matches;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (
             entry.isIntersecting &&
-            entry.intersectionRatio >= 0.8 &&
+            (isPhone || entry.intersectionRatio >= 0.8) &&
             !hasAnimated.current
           ) {
             hasAnimated.current = true;
@@ -43,7 +44,7 @@ const DetailSecondary = () => {
         });
       },
       {
-        threshold: 0.8,
+        threshold: isPhone ? 0.1 : 0.8,
       }
     );
 

@@ -120,6 +120,28 @@
 @media screen and (max-width: 1130px) {
     .detailParent{
         flex-direction: column;
+        padding: 20px;
+        flex-shrink: 1;
+        .detailMeta{
+            margin-left: 20px;
+            margin-right: 20px;
+            .detailMetaTitle{
+                font-size: 40px;
+            }
+        }
+    }
+
+  }
+
+  @media screen and (max-width: 630px) {
+    .detailParent{
+        gap: 20px;
+        margin-top: 60px;
+        margin-bottom: 0;
+        
+       .detailMedia{
+        transform: scale(0.7);
+       }
     }
 
   }
