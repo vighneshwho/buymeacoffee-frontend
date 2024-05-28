@@ -79,9 +79,29 @@
     }
     input::placeholder{
         color: rgba($black, 0.50);
-    }
-    
-    
-
-    
+    }   
 }
+
+
+@media screen and (max-width: 1020px) {
+    .headerParent {
+        .menu{
+            display: none;
+            background-color: red;
+         }
+
+         .buttons{
+            display: none;
+         }
+
+         .searchBoxParent{
+            display: none;
+         }
+
+         img{
+            margin-right: auto;
+         }
+    }
+
+
+  }

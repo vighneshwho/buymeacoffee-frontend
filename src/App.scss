@@ -7,13 +7,50 @@ $dpBlue: #AAC6F1;
 $dpGreen: #ACE4B2;
 
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+    font-family: 'Graphik';
+    src: url('./assets/fonts/GraphikRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Graphik';
+    src: url('./assets/fonts/GraphikMedium.otf') format('opentype');
+    font-weight: 500; /* Medium */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Graphik';
+    src: url('./assets/fonts/GraphikSemiBold.otf') format('opentype');
+    font-weight: 600; /* Semi-Bold */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Graphik';
+    src: url('./assets/fonts/GraphikBold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Graphik';
+    src: url('./assets/fonts/GraphikBlack.otf') format('opentype');
+    font-weight: 900; /* Black */
+    font-style: normal;
+  }
 
 body{
     padding: 0;
     margin: 0;
-    font-family: "Montserrat", sans-serif;
+    font-family: "Graphik", sans-serif;
     color: $black;
+}
+
+*{
+    font-family: "Graphik", sans-serif;
 }
 
 .button{

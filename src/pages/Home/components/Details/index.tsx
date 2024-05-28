@@ -5,7 +5,12 @@ import DetailTertiary from "./components/DetailTertiary";
 const Details = () => {
   return (
     <div
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        overflow: "hidden",
+      }}
     >
       <DetailPrimary />
       <DetailSecondary />

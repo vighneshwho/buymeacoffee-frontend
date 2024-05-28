@@ -4,8 +4,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
-    width: 1150px;
+    width: 100%;
+    max-width: 1150px;
     margin-top: 160px;
     gap: 102px;
 
@@ -113,6 +115,11 @@
 
     }
 
-    
-
 }
+
+@media screen and (max-width: 1130px) {
+    .detailParent{
+        flex-direction: column;
+    }
+
+  }

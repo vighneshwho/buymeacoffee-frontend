@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
 import style from "./style.module.scss";
 
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  gender: string;
+  status: string;
+}
+
 const Carousel = () => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     const fetchUsers = async () => {

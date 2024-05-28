@@ -6,7 +6,9 @@
     align-items: center;
     justify-content: space-between;
 
-    width: 1150px;
+    width: 100%;
+    max-width: 1150px;
+    margin-top: 160px;
     gap: 102px;
 
     margin-bottom: 160px;
@@ -75,7 +77,6 @@
         
         
         border-radius: 34px;
-
         opacity: 0;
 
         .dynamicImgContainer{
@@ -112,6 +113,11 @@
 
     }
 
-    
-
 }
+
+@media screen and (max-width: 1130px) {
+    .detailParent{
+        flex-direction: column;
+    }
+
+  }
