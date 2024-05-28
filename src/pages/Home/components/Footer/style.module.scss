@@ -16,6 +16,8 @@
         align-items: flex-start;
         justify-content: space-between;
 
+        
+
         .logoContainer{
             margin-right: 208px;
             img{
@@ -33,9 +35,13 @@
             .footerLinksParent{
                 align-self: stretch;
 
-                display: flex;
-                align-items: flex-start;
-                justify-content: space-between;
+                // display: flex;
+                // align-items: flex-start;
+                // justify-content: space-between;
+
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                gap: 20px;
                 margin-bottom: 60px;
 
                 .footerLinks{
@@ -60,6 +66,14 @@
                     }
                 }
             }
+
+            @media screen and (max-width: 1130px) {
+                .footerLinksParent{
+                    grid-template-columns: 1fr 1fr;
+                    gap: 40px;
+                }
+            
+              }
             .footerAppStoreLinks{
                 display: flex;
                 align-items: center;
@@ -81,4 +95,31 @@
             }
         }
     }
+
+    @media screen and (max-width: 1130px) {
+        .footerContainer{
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+
+            .logoContainer{
+                align-self: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 0;
+                margin-bottom: 108px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                img{
+                    width: 50px;
+                }
+            }
+        }
+    
+      }
 }

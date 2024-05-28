@@ -18,13 +18,14 @@
         .metaTitle{
             font-size: 55px;
             font-weight: 700;
+            text-align: center;
         }
 
         .metaDescription{
             margin-top: 16px;
             font-size: 18px;
 
-            width: 500px;
+            max-width: 500px;
             line-height: 32px;
             text-align: center;
         }
