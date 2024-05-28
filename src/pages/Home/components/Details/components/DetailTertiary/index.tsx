@@ -1,5 +1,5 @@
 import style from "./style.module.scss";
-import smile from "../../assets/smile.svg";
+import pin from "../../assets/pin.svg";
 import arrow from "../../assets/arrow.svg";
 import man from "../../assets/man.png";
 import maps from "../../assets/maps.png";
@@ -81,7 +81,7 @@ const DetailTertiary = () => {
   return (
     <div className={style.detailParent} ref={detailParentRef}>
       <div className={style.detailMeta} id="metaTertiary">
-        <img src={smile} alt="smiley face" />
+        <img src={pin} alt="smiley face" />
         <div className={style.detailMetaTitle}>Express Yourself freely</div>
         <div className={style.detailMetaDesc}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

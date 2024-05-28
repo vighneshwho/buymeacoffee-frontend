@@ -1,6 +1,7 @@
 import Carousel from "./components/Carousel";
 import Details from "./components/Details";
 import Hero from "./components/Hero";
+import Footer from "./components/Footer";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <Hero />
       <Details />
       <Carousel />
+      <Footer />
     </>
   );
 };
