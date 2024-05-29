@@ -1,7 +1,7 @@
 @import "../../../../App.scss";
 
 .userDataMain{
-    margin: 70px 140px 70px 140px;
+    margin: 70px 90px 70px 90px;
     padding: 52px 40px;
 
     display: flex;
@@ -57,39 +57,92 @@
             justify-content: flex-start;
             overflow: auto;
 
-            .userTableContainer{
-                flex: 1;
-                min-width: 800px;
-                display: flex;
-                flex-direction: column;
-                align-items: stretch;
-                
+            table{
+                width: 100%;
+                border-collapse: collapse;
 
-                .tableRow{
-                    flex-shrink: 0;
-                    display: grid;
-                    padding: 30px 52px;
-                    grid-template-columns: minmax(200px, 1fr) minmax(250px, 1fr) 100px 150px minmax(200px, 1fr);
-                    gap: 20px;
+                tr{
                     border-bottom: 1px #E3D7D7 solid;
-
-                    background-color: #ffd0d0;
-
-                    .rowItem{
-                        display: flex;
-                        font-weight: 400;
-                        align-items: center;
-                        justify-content: flex-start;
-                        
-                    }
                 }
 
-                .tableHeader{
+                th{
+                    font-weight: 400;
                     color: #717171;
+                    
+                }
+
+                td, th{
+                    text-align: left;
+                    min-width: 220px;
+                    padding: 20px;
+
                     font-size: 18px;
                 }
-            }
 
+                .name{
+                    padding: 20px 20px 20px 40px ;
+                }
+
+                .gender{
+                    min-width: 90px;
+                    width: 90px;
+
+                    
+                }
+
+                .status{
+                    min-width: 150px;
+                    width: 150px;
+                }
+
+                .action{
+                    padding: 20px 40px 20px 20px ;
+                    min-width: 180px;
+                    width: 180px;
+
+                    text-align: right;
+                }
+            }
+            
+
+        }
+
+        .buttonContainer{
+
+            margin-top: 31px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            button{
+                font-size: 14px;
+            font-weight: 500;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 5px;
+            border: none;
+
+            background-color: rgba($black, 5%);
+
+            height: 40px;
+
+            padding: 0 15px;
+            border-radius: 20px;
+
+            cursor: pointer;
+
+            transition: background-color 0.2s ease-out;
+
+            &:hover{
+                background-color: rgba($black, 20%);
+            }
+            }
         }
 
     }

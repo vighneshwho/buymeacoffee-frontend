@@ -1,23 +1,26 @@
 import style from "./style.module.scss";
+import down from "../assets/down.svg";
 import data from "./data.ts";
 
 const UserData = () => {
   const rowItems = data.map((user, index) => {
     return (
-      <div className={`${style.tableRow}`} key={index}>
-        <div className={style.rowItem}>{user.name}</div>
-        <div className={style.rowItem}>{user.email}</div>
-        <div className={style.rowItem}>{user.gender}</div>
-        <div className={style.rowItem}>{user.status}</div>
-        <div
-          className={style.rowItem}
-          style={{
-            justifyContent: "flex-end",
-          }}
-        >
-          Edit Delete
-        </div>
-      </div>
+      <tbody key={index}>
+        <tr className={`${style.tableRow}`}>
+          <td className={style.name}>{user.name}</td>
+          <td className={style.email}>{user.email}</td>
+          <td className={style.gender}>{user.gender}</td>
+          <td className={style.status}>{user.status}</td>
+          <td
+            className={style.action}
+            style={{
+              justifyContent: "flex-end",
+            }}
+          >
+            Edit Delete
+          </td>
+        </tr>
+      </tbody>
     );
   });
 
@@ -30,23 +33,24 @@ const UserData = () => {
         </div>
 
         <div className={style.userTableContainerParent}>
-          <div className={style.userTableContainer}>
-            <div className={`${style.tableRow} ${style.tableHeader}`}>
-              <div className={style.rowItem}>Name</div>
-              <div className={style.rowItem}>Email</div>
-              <div className={style.rowItem}>Gender</div>
-              <div className={style.rowItem}>Available for chat</div>
-              <div
-                className={style.rowItem}
-                style={{
-                  justifyContent: "flex-end",
-                }}
-              >
-                Action
-              </div>
-            </div>
+          <table>
+            <thead>
+              <tr>
+                <th className={style.name}>Name</th>
+                <th className={style.email}>Email</th>
+                <th className={style.gender}>Gender</th>
+                <th className={style.status}>Available for chat</th>
+                <th className={style.action}>Action</th>
+              </tr>
+            </thead>
             {rowItems}
-          </div>
+          </table>
+        </div>
+
+        <div className={style.buttonContainer}>
+          <button className={style.loadMore}>
+            Load More <img src={down} alt="arrow-down" />
+          </button>
         </div>
       </div>
     </div>
