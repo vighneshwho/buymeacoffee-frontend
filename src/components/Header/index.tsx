@@ -5,7 +5,7 @@ import logo from "../../assets/logo.png";
 import SearchBox from "./SearchBox";
 import { useState } from "react";
 
-const Header = () => {
+const Header = ({ isUsers = false }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   return (
     <div className={styles.headerParent}>
@@ -15,25 +15,40 @@ const Header = () => {
 
       <ul style={{ marginRight: "auto" }} className={styles.menu}>
         <li>
-          <a href="#">Home</a>
+          <a href="/">Home</a>
         </li>
         <li>
-          <a href="#">Features</a>
+          <a href="/users">Features</a>
         </li>
         <li>
-          <a href="#">Explore creators</a>
+          <a href="/users">Explore creators</a>
         </li>
         <li>
           <a href="#">FAQ</a>
         </li>
       </ul>
 
-      <SearchBox />
+      {isUsers && (
+        <div className={styles.admin}>
+          <span>Admin</span>
+          <div className={styles.avatarContainer}>
+            <img
+              src="https://xsgames.co/randomusers/avatar.php?g=female"
+              alt="admin"
+            />
+          </div>
+        </div>
+      )}
 
-      <div className={styles.buttons}>
-        <div className="button white">Sign In</div>
-        <div className="button">Sign Up</div>
-      </div>
+      {!isUsers && <SearchBox />}
+
+      {!isUsers && (
+        <div className={styles.buttons}>
+          <div className="button white">Sign In</div>
+          <div className="button">Sign Up</div>
+        </div>
+      )}
+
       <div
         className={styles.menuIcon}
         onClick={() => {
@@ -42,7 +57,6 @@ const Header = () => {
       >
         <img src={menu} alt="" />
       </div>
-
       <div
         className={styles.menuDrawer}
         style={{
@@ -51,25 +65,27 @@ const Header = () => {
       >
         <ul style={{ marginRight: "auto" }} className={styles.drawerMenu}>
           <li>
-            <a href="#">Home</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="#">Features</a>
+            <a href="/users">Features</a>
           </li>
           <li>
-            <a href="#">Explore creators</a>
+            <a href="/users">Explore creators</a>
           </li>
           <li>
             <a href="#">FAQ</a>
           </li>
         </ul>
 
-        <SearchBox />
+        {!isUsers && <SearchBox />}
 
-        <div className={styles.drawerButtons}>
-          <div className="button white">Sign In</div>
-          <div className="button">Sign Up</div>
-        </div>
+        {!isUsers && (
+          <div className={styles.drawerButtons}>
+            <div className="button white">Sign In</div>
+            <div className="button">Sign Up</div>
+          </div>
+        )}
 
         <div
           className={styles.close}

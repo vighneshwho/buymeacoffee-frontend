@@ -96,11 +96,42 @@
                 }
 
                 .action{
+                    text-align: end;
+                    padding: 20px 40px 20px 20px ;
+                    min-width: 180px;
+                    width: 180px;
+                }
+
+                .actionTd{
                     padding: 20px 40px 20px 20px ;
                     min-width: 180px;
                     width: 180px;
 
                     text-align: right;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    gap: 40px;
+
+                    button{
+                        background-color: white;
+                        border: none;
+                        cursor: pointer;
+                    }
+
+                    .edit{
+                        background-color: rgba(#EBEBEB, 60%);
+                        font-size: 16px;
+                        padding: 0 20px;
+                        height: 35px;
+
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 20px;
+                        color: #222222;
+                    }
                 }
             }
             

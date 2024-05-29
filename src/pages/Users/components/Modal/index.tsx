@@ -1,43 +1,67 @@
 import style from "./style.module.scss";
 import close from "../../../../assets/x.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ErrorItem {
   field: string;
   message: string;
 }
 
-const Modal = () => {
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  gender: string;
+  status: string;
+}
+
+interface ModalProps {
+  isOpen: boolean;
+  closeModal: () => void;
+  isEdit: boolean;
+  selectedUser: User | null;
+  editFromLocal: (arg0: User) => void;
+  addToLocal: (arg0: User) => void;
+}
+
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  isEdit,
+  closeModal,
+  selectedUser,
+  editFromLocal,
+  addToLocal,
+}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("female");
   const [status, setStatus] = useState("inactive");
   const [emailError, setEmailError] = useState("");
+  const [nameError, setNameError] = useState("");
 
   const token = import.meta.env.VITE_API_TOKEN;
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setEmail(value);
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(value)) {
-      setEmailError("Invalid email address");
-    } else {
-      setEmailError("");
-    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (emailError) {
-      alert("Please fix the errors before submitting");
-      return;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailTest = !emailRegex.test(email);
+    if (emailTest) {
+      setEmailError("Invalid email address");
+    } else {
+      setEmailError("");
     }
 
-    // Data to be posted, taken from state variables
+    if (!name) {
+      setNameError("Name shouldn't be blank");
+    } else {
+      setNameError("");
+    }
     const data = {
       email,
       name,
@@ -45,59 +69,114 @@ const Modal = () => {
       status,
     };
 
-    try {
-      const response = await fetch("https://gorest.co.in/public/v2/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(data),
-      });
+    if (!emailTest && name) {
+      try {
+        let url = "https://gorest.co.in/public/v2/users";
+        let method = "POST";
 
-      if (response.ok) {
-        alert("Data successfully posted to API");
-      } else {
-        console.error("Failed to post data to API");
-        const errorData: ErrorItem[] = await response.json();
-        console.error("Error details:", errorData);
-        errorData.forEach((item) => {
-          alert(item.field + " " + item.message);
+        if (isEdit && selectedUser) {
+          url = `https://gorest.co.in/public/v2/users/${selectedUser.id}`;
+          method = "PUT";
+        }
+        const response = await fetch(url, {
+          method: method,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(data),
         });
+
+        if (response.ok) {
+          const responseData = await response.json();
+          if (isEdit) editFromLocal(responseData);
+          else addToLocal(responseData);
+          closeModal();
+        } else {
+          console.error("Failed to post data to API");
+          const errorData: ErrorItem[] = await response.json();
+          console.error("Error details:", errorData);
+          errorData.forEach((item) => {
+            alert(item.field + " " + item.message);
+          });
+        }
+      } catch (error) {
+        console.error("Error while posting data to API:", error);
       }
-    } catch (error) {
-      console.error("Error while posting data to API:", error);
     }
   };
 
+  useEffect(() => {
+    console.log("Selected user useEffeect", selectedUser);
+    if (selectedUser) {
+      setName(selectedUser.name);
+      setEmail(selectedUser.email);
+      setGender(selectedUser.gender);
+      setStatus(selectedUser.status);
+    } else {
+      setName("");
+      setEmail("");
+    }
+  }, [selectedUser]);
+
   return (
-    <div className={style.modalContainerMain}>
+    <div
+      className={style.modalContainerMain}
+      style={{
+        display: `${isOpen ? "flex" : "none"}`,
+      }}
+    >
       <div className={style.modal}>
         <div className={style.modalHeader}>
           <div className={style.title}>Add a new creator</div>
-          <img src={close} alt="" />
+          <button
+            onClick={() => {
+              closeModal();
+            }}
+          >
+            <img src={close} alt="" />
+          </button>
         </div>
 
         <form onSubmit={handleSubmit} className={style.modalForm}>
           <div>
             <label htmlFor="name">Creator Name</label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <div className={style.inputContainer}>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                style={{
+                  borderColor: `${nameError ? "red" : ""}`,
+                }}
+              />
+              {nameError && (
+                <span className={style.errorMessage} style={{ color: "red" }}>
+                  {nameError}
+                </span>
+              )}
+            </div>
           </div>
 
           <div>
             <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            {emailError && <span style={{ color: "red" }}>{emailError}</span>}
+            <div className={style.inputContainer}>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={handleEmailChange}
+                style={{
+                  borderColor: `${emailError ? "red" : ""}`,
+                }}
+              />
+              {emailError && (
+                <span className={style.errorMessage} style={{ color: "red" }}>
+                  {emailError}
+                </span>
+              )}
+            </div>
           </div>
 
           <div>
@@ -114,7 +193,7 @@ const Modal = () => {
 
           <div>
             <label>Available for chat</label>
-            <div>
+            <div className={style.radioDiv}>
               <label>
                 <input
                   type="radio"
@@ -123,7 +202,7 @@ const Modal = () => {
                   checked={status === "active"}
                   onChange={(e) => setStatus(e.target.value)}
                 />
-                Active
+                <span>Active</span>
               </label>
               <label>
                 <input
@@ -133,13 +212,13 @@ const Modal = () => {
                   checked={status === "inactive"}
                   onChange={(e) => setStatus(e.target.value)}
                 />
-                Inactive
+                <span>Inactive</span>
               </label>
             </div>
           </div>
 
           <button type="submit" className={style.button}>
-            + Add creator
+            {isEdit ? "Edit Creator" : "+ Add creator"}
           </button>
         </form>
       </div>

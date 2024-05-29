@@ -31,6 +31,12 @@
             padding-bottom: 24px;
             border-bottom: 1px #E3D7D7 solid;
             margin-bottom: 24px;
+
+            button{
+                border: none;
+                background-color: white;
+                cursor: pointer;
+            }
         }
 
         .modalForm{
@@ -46,11 +52,44 @@
                 align-items: center;
                 justify-content: space-between;
 
+                .radioDiv{
+                    align-self: flex-start;
+                    flex: 1;
+                    display: flex;
+                    justify-content: flex-start;
+
+                    label{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        input{
+                            height: 20px;
+                            width: 20px;
+                        }
+                    }
+                }
+
                 label{
                     font-weight: 600;
                     font-size: 16px;
                     width: 150px;
                 }
+                .inputContainer{
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                    height: 48px;
+                }
+
+                .errorMessage{
+                    font-size: 10px;
+                    position: absolute;
+                    bottom: -15px;
+                }
+
+                
 
                 input, select{
                     border: 1px #E3D7D7 solid;;
@@ -62,7 +101,13 @@
                     font-size: 16px;
                     border-radius: 5px;
                 }
+
+                input:focus{
+                    border-color: $black;
+                }
             }
+
+            
 
             .button{
             align-self: flex-start;
