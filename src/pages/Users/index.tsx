@@ -1,4 +1,5 @@
 import Header from "../../components/Header";
+import Modal from "./components/Modal";
 import UserData from "./components/UserData";
 
 const Users = () => {
@@ -6,6 +7,7 @@ const Users = () => {
     <>
       <Header />
       <UserData />
+      <Modal />
     </>
   );
 };

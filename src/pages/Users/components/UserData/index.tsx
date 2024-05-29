@@ -1,16 +1,55 @@
 import style from "./style.module.scss";
 import down from "../assets/down.svg";
-import data from "./data.ts";
+import { useEffect, useState } from "react";
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  gender: string;
+  status: string;
+}
 
 const UserData = () => {
-  const rowItems = data.map((user, index) => {
+  const [users, setUsers] = useState<User[]>([]);
+  const [page, setPage] = useState(1);
+  const usersPerPage = 7;
+
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch(
+        `https://gorest.co.in/public/v2/users?page=${page}&per_page=${usersPerPage}`
+      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      setPage((prev) => prev + 1);
+      const data = await response.json();
+      setUsers((prev) => [...prev, ...data]);
+    } catch (error) {
+      console.error("Failed to fetch users:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+  const rowItems = users.map((user, index) => {
     return (
       <tbody key={index}>
         <tr className={`${style.tableRow}`}>
           <td className={style.name}>{user.name}</td>
           <td className={style.email}>{user.email}</td>
           <td className={style.gender}>{user.gender}</td>
-          <td className={style.status}>{user.status}</td>
+          <td
+            className={style.status}
+            style={{
+              color: `${user.status === "active" ? "#4C9A2A" : "#FF0000"}`,
+              fontWeight: "600",
+            }}
+          >
+            {user.status}
+          </td>
           <td
             className={style.action}
             style={{
@@ -48,7 +87,7 @@ const UserData = () => {
         </div>
 
         <div className={style.buttonContainer}>
-          <button className={style.loadMore}>
+          <button className={style.loadMore} onClick={() => fetchUsers()}>
             Load More <img src={down} alt="arrow-down" />
           </button>
         </div>
