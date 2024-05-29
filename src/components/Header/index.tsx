@@ -14,10 +14,18 @@ const Header = () => {
       </div>
 
       <ul style={{ marginRight: "auto" }} className={styles.menu}>
-        <li>Home</li>
-        <li>Features</li>
-        <li>Explore creators</li>
-        <li>FAQ</li>
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">Features</a>
+        </li>
+        <li>
+          <a href="#">Explore creators</a>
+        </li>
+        <li>
+          <a href="#">FAQ</a>
+        </li>
       </ul>
 
       <SearchBox />
@@ -42,10 +50,18 @@ const Header = () => {
         }}
       >
         <ul style={{ marginRight: "auto" }} className={styles.drawerMenu}>
-          <li>Home</li>
-          <li>Features</li>
-          <li>Explore creators</li>
-          <li>FAQ</li>
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Features</a>
+          </li>
+          <li>
+            <a href="#">Explore creators</a>
+          </li>
+          <li>
+            <a href="#">FAQ</a>
+          </li>
         </ul>
 
         <SearchBox />

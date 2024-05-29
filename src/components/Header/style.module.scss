@@ -30,14 +30,20 @@
         align-items: center;
         justify-content: center;
         gap: 32px;
+
+        a{
+            text-decoration: none;
+            color: $black;
+            transition: color 0.2s ease-out;
+        }
     }
 
     .menu > li{
         cursor: pointer;
-        transition: color 0.2s ease-out;
+        
     }
 
-    .menu>li:hover{
+    .menu>li > a:hover{
         color: $purpleHover;
     }
 
@@ -90,6 +96,12 @@
             gap: 32px;
 
             margin-bottom: 40px;
+
+            a{
+                text-decoration: none;
+                color: $black;
+                transition: color 0.2s ease-out;
+            }
         }
 
         & > .searchBoxParent {
@@ -105,7 +117,7 @@
             font-weight: 600;
         }
     
-        .drawerMenu>li:hover{
+        .drawerMenu>li > a:hover{
             color: $purpleHover;
         }
     
