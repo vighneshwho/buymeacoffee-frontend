@@ -1,0 +1,98 @@
+@import "../../../../App.scss";
+
+.userDataMain{
+    margin: 70px 140px 70px 140px;
+    padding: 52px 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .userDataContainer{
+        width: 100%;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+
+
+        .userDataHeader{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 33px;
+
+            .title{
+                font-weight: 600;
+                font-size: 24px;
+            }
+
+            .addUser{
+                background-color: $purple;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                font-size: 16px;
+                font-weight: 600;
+                padding: 0 15px;
+                height: 40px;
+
+                border-radius: 20px;
+                transition: background-color 0.2s ease-out;
+
+                &:hover{
+                    cursor: pointer;
+                    background-color: $purpleHover;
+                }
+            }
+        }
+
+        .userTableContainerParent{
+            border: 1px #E3D7D7 solid;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            overflow: auto;
+
+            .userTableContainer{
+                flex: 1;
+                min-width: 800px;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                
+
+                .tableRow{
+                    flex-shrink: 0;
+                    display: grid;
+                    padding: 30px 52px;
+                    grid-template-columns: minmax(200px, 1fr) minmax(250px, 1fr) 100px 150px minmax(200px, 1fr);
+                    gap: 20px;
+                    border-bottom: 1px #E3D7D7 solid;
+
+                    background-color: #ffd0d0;
+
+                    .rowItem{
+                        display: flex;
+                        font-weight: 400;
+                        align-items: center;
+                        justify-content: flex-start;
+                        
+                    }
+                }
+
+                .tableHeader{
+                    color: #717171;
+                    font-size: 18px;
+                }
+            }
+
+        }
+
+    }
+
+    
+}
