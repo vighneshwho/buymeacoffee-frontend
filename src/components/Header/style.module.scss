@@ -49,6 +49,91 @@
         gap: 13px;
         margin-left: 13px;
     }
+
+    .menuIcon{
+        margin-left: auto;
+        display: none;
+        cursor: pointer;
+        img{
+           width: 30px;
+        }
+    }
+
+    .menuDrawer{
+        position: fixed;
+        left: 100%;
+        top: 0;
+
+        width: 100vw;
+        height: 100vh;
+
+        background-color: white;
+
+        z-index: 300;
+
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: left 0.2s ease-out;
+
+
+        .drawerMenu{
+            margin: 0 auto;
+            padding: 0;
+            list-style-type: none;
+    
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+
+            margin-bottom: 40px;
+        }
+
+        & > .searchBoxParent {
+            margin-bottom: 40px;
+            width: 80vw;
+        }
+    
+        .drawerMenu > li{
+            cursor: pointer;
+            transition: color 0.2s ease-out;
+
+            font-size: 50px;
+            font-weight: 600;
+        }
+    
+        .drawerMenu>li:hover{
+            color: $purpleHover;
+        }
+    
+        .drawerButtons{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+    
+            gap: 13px;
+            margin-left: 13px;
+
+            & > div{
+                width: 80vw;
+            }
+        }
+
+        .close{
+            position: absolute;
+            top: 19px;
+            right: 39px;
+            cursor: pointer;
+
+            img{
+                width: 35px;
+            }
+        }
+    }
 }
 
 .searchBoxParent{
@@ -85,16 +170,23 @@
 
 @media screen and (max-width: 1020px) {
     .headerParent {
+        .menuDrawer{
+            display: flex;
+        }
         .menu{
             display: none;
             background-color: red;
+         }
+
+         .menuIcon{
+            display: flex;
          }
 
          .buttons{
             display: none;
          }
 
-         .searchBoxParent{
+         & > .searchBoxParent{
             display: none;
          }
 
@@ -103,5 +195,14 @@
          }
     }
 
+  }
 
+  @media screen and (max-width: 500px){
+    .headerParent{
+        .menuDrawer{
+            .drawerMenu > li{
+                font-size: 20px;
+            }
+        }
+    }
   }
