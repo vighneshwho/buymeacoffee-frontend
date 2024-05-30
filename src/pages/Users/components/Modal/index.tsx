@@ -101,6 +101,7 @@ const Modal: React.FC<ModalProps> = ({
           errorData.forEach((item) => {
             alert(item.field + " " + item.message);
           });
+          closeModal();
         }
       } catch (error) {
         console.error("Error while posting data to API:", error);
@@ -202,7 +203,11 @@ const Modal: React.FC<ModalProps> = ({
                   value="active"
                   checked={status === "active"}
                   onChange={(e) => setStatus(e.target.value)}
+                  className={style.__input}
                 />
+                <div className={style.radio__div}>
+                  <div className={style.radioInner}></div>
+                </div>
                 <span>Active</span>
               </label>
               <label>
@@ -212,7 +217,11 @@ const Modal: React.FC<ModalProps> = ({
                   value="inactive"
                   checked={status === "inactive"}
                   onChange={(e) => setStatus(e.target.value)}
+                  className={style.__input}
                 />
+                <div className={style.radio__div}>
+                  <div className={style.radioInner}></div>
+                </div>
                 <span>Inactive</span>
               </label>
             </div>

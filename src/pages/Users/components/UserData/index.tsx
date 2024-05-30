@@ -51,7 +51,6 @@ const UserData = () => {
       gender: "male",
       status: "active",
     });
-    console.log("selectedUser set to:", selectedUser);
     setIsModalOpen(false);
   };
 

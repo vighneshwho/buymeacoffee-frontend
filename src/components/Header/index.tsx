@@ -10,7 +10,9 @@ const Header = ({ isUsers = false }) => {
   return (
     <div className={styles.headerParent}>
       <div className={styles.headerImage}>
-        <img src={logo} alt="" />
+        <a href="/">
+          <img src={logo} alt="" />
+        </a>
       </div>
 
       <ul style={{ marginRight: "auto" }} className={styles.menu}>
@@ -44,8 +46,23 @@ const Header = ({ isUsers = false }) => {
 
       {!isUsers && (
         <div className={styles.buttons}>
-          <div className="button white">Sign In</div>
-          <div className="button">Sign Up</div>
+          <a
+            href="/users"
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <div className="button white">Sign In</div>
+          </a>
+
+          <a
+            href="/users"
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <div className="button">Sign Up</div>
+          </a>
         </div>
       )}
 
