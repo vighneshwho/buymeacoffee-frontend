@@ -91,6 +91,8 @@ const Modal: React.FC<ModalProps> = ({
           const responseData = await response.json();
           if (isEdit) editFromLocal(responseData);
           else addToLocal(responseData);
+          setEmailError("");
+          setNameError("");
           closeModal();
         } else {
           console.error("Failed to post data to API");
@@ -107,7 +109,6 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   useEffect(() => {
-    console.log("Selected user useEffeect", selectedUser);
     if (selectedUser) {
       setName(selectedUser.name);
       setEmail(selectedUser.email);

@@ -17,20 +17,40 @@ const UserData = () => {
   const [page, setPage] = useState(1);
   const [isEdit, setIsEdit] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [selectedUser, setSelectedUser] = useState<User | null>({
+    id: 0,
+    name: "",
+    email: "",
+    gender: "male",
+    status: "active",
+  });
   const [rowItems, setRowItems] = useState<ReactElement[]>([]);
   const token = import.meta.env.VITE_API_TOKEN;
 
   const openModal = (user: User | null = null) => {
     if (user) {
       setSelectedUser(user);
+    } else {
+      setSelectedUser({
+        id: 0,
+        name: "",
+        email: "",
+        gender: "male",
+        status: "active",
+      });
     }
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsEdit(false);
-    setSelectedUser(null);
+    setSelectedUser({
+      id: 0,
+      name: "",
+      email: "",
+      gender: "male",
+      status: "active",
+    });
     console.log("selectedUser set to:", selectedUser);
     setIsModalOpen(false);
   };
